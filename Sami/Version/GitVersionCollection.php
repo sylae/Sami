@@ -34,7 +34,7 @@ class GitVersionCollection extends VersionCollection
             return true;
         };
         $this->sorter = function ($a, $b) {
-            return version_compare($a, $b, '>');
+            return version_compare($a, $b);
         };
         $this->gitPath = 'git';
     }
