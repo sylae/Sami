@@ -44,7 +44,13 @@ abstract class Reflection
 
     public function getName()
     {
-        return $this->name;
+        if (is_string($this->name)) {
+            return $this->name;
+        } elseif (is_array($this->name)) {
+            return $this->name['name'];
+        } else {
+            return $this->name->name;
+        }
     }
 
     public function setName($name)
