@@ -4,7 +4,6 @@
     "compactors": [
         "Herrera\\Box\\Compactor\\Php"
     ],
-    "extract": false,
     "main": "sami.php",
     "files": [
         "LICENSE"
@@ -20,6 +19,5 @@
             "in": "Sami"
         }
     ],
-    "stub": true,
-    "web": false
+    "stub": true
 }
