@@ -60,27 +60,27 @@ abstract class VersionCollection implements \Iterator, \Countable
         return $this->versions;
     }
 
-    public function key()
+    public function key(): mixed
     {
         return $this->indice;
     }
 
-    public function current()
+    public function current(): mixed
     {
         return $this->versions[$this->indice];
     }
 
-    public function next()
+    public function next(): void
     {
         ++$this->indice;
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         $this->indice = 0;
     }
 
-    public function valid()
+    public function valid(): bool
     {
         if ($this->indice < count($this->versions)) {
             $this->switchVersion($this->current());
@@ -91,7 +91,7 @@ abstract class VersionCollection implements \Iterator, \Countable
         return false;
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->versions);
     }

@@ -61,12 +61,14 @@ class Index implements \Serializable
         return $this->classes[$class] ?? false;
     }
 
-    public function serialize()
+    public function serialize() { return serialize($this->__serialize()); }
+    public function __serialize(): array
     {
-        return serialize(array($this->classes, $this->versions, $this->namespaces));
+        return array($this->classes, $this->versions, $this->namespaces);
     }
 
-    public function unserialize($data)
+    public function unserialize($data) { $this->__unserialize($data); }
+    public function __unserialize($data)
     {
         list($this->classes, $this->versions, $this->namespaces) = unserialize($data);
     }
