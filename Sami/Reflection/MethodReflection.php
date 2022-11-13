@@ -11,6 +11,7 @@
 
 namespace Sami\Reflection;
 
+use PhpParser\Node\Identifier;
 use Sami\Project;
 
 class MethodReflection extends Reflection
@@ -26,8 +27,12 @@ class MethodReflection extends Reflection
     {
         if (is_string($this->name)) {
             $n = $this->name;
-        } else {
+        } elseif (is_array($this->name)) {
             $n = $this->name['name'];
+        } elseif ($this->name instanceof Identifier) {
+            $n = $this->name->name;
+        } else {
+            throw new \Exception("Unknown MethodReflection name, please file an issue.");
         }
         return $this->class.'::'.$n;
     }
