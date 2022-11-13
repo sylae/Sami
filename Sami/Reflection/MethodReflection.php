@@ -24,7 +24,12 @@ class MethodReflection extends Reflection
 
     public function __toString()
     {
-        return $this->class.'::'.$this->name;
+        if (is_string($this->name)) {
+            $n = $this->name;
+        } else {
+            $n = $this->name['name'];
+        }
+        return $this->class.'::'.$n;
     }
 
     public function setByRef($boolean)
